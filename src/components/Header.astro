@@ -1,0 +1,242 @@
+---
+/* TS Section */
+import {myName} from './../constants/constants';
+---
+
+<div id="navbar" class="navbar flex items-center gap-[1rem] lg:justify-center px-4">
+	<!-- <div class="absolute hidden lg:flex left-4 cursor-default">
+		<span class="quickSandFont text-base w-full">
+			{myName}
+		</span>
+	</div> -->
+
+    <div class="mx-auto max-w-[84rem] w-full hidden lg:flex flex-row counter">
+		<div class="w-full justify-start items-center">
+			<span class="quickSandFont text-base w-full">
+				{myName}
+			</span>
+		</div>
+        <div class="w-full flex justify-end items-center">
+			<a href="/">
+				<div class="nav-button">
+					<span class="sup">H0ME<span>
+				</div>
+				<!-- <div class="nav-button">H0ME</div> -->
+			</a>
+			<!-- <span class="nav-separator w-fit h-fit">/</span> -->
+			<a href="/projects">
+				<div class="nav-button">
+					<span class="sup">PR0JECTS<span>
+				</div>
+				<!-- <div class="nav-button">PR0JECTS</div> -->
+			</a>
+			<!-- <span class="nav-separator w-fit h-fit">/</span> -->
+			<a href="/contact">
+				<div class="nav-button">
+					<span class="sup">C0NTACT<span>
+				</div>
+				<!-- <div class="nav-button">C0NTACT</div> -->
+			</a>
+			<!-- <span class="nav-separator w-fit h-fit">/</span> -->
+			<div class="nav-button" id="menuButton_desktop">
+				<span class="sup">M0RE<span>
+			</div>
+		</div>
+    </div>
+    <div class="flex lg:hidden w-full h-full items-center">
+        <span class="quickSandFont text-base w-full">
+			{myName}
+		</span>
+		<div class="w-full text-end">
+			<span id="menuButton" class="text-center cursor-pointer material-symbols-outlined text-4xl color-[--title]">
+				menu
+			</span>
+		</div>
+    </div>
+</div>
+<div class="full-menu counter" id="mobile-menu"> 
+	<!-- <span>test</span> -->
+	<div class="w-full h-full mt-2 mb-2 flex flex-col gap-y-[2rem] pr-8 pt-8 items-end justify-start">
+		<a href="/">
+			<div class="nav-button">
+				<span class="sup">H0ME<span>
+			</div>
+			<!-- <div class="nav-button">H0ME</div> -->
+		</a>
+		<!-- <span class="nav-separator w-fit h-fit">/</span> -->
+		<a href="/projects">
+			<div class="nav-button">
+				<span class="sup">PR0JECTS<span>
+			</div>
+			<!-- <div class="nav-button">PR0JECTS</div> -->
+		</a>
+		<!-- <span class="nav-separator w-fit h-fit">/</span> -->
+		<a href="/about_me">
+			<div class="nav-button">
+				<span class="sup">AB0UT_ME<span>
+			</div>
+			<!-- <div class="nav-button">M0RE</div> -->
+		</a>
+		<!-- <span class="nav-separator w-fit h-fit">/</span> -->
+		<a href="/experience">
+			<div class="nav-button">
+				<span class="sup">EXPERIENCE<span>
+			</div>
+			<!-- <div class="nav-button">M0RE</div> -->
+		</a>
+		<!-- <span class="nav-separator w-fit h-fit">/</span> -->
+		<a href="/contact">
+			<div class="nav-button">
+				<span class="sup">C0NTACT<span>
+			</div>
+			<!-- <div class="nav-button">C0NTACT</div> -->
+		</a>
+	</div>
+</div>
+
+<script>
+
+	let menuButton: any = document.querySelector('#menuButton');
+	let menuButtonDesk: any = document.querySelector('#menuButton_desktop');
+
+	let mobileMenu: any = document.querySelector('#mobile-menu');
+	
+	menuButton.addEventListener('click', () => {
+		doMenuLogic(mobileMenu);
+	});
+
+	menuButtonDesk.addEventListener('click', () => {
+		doMenuLogic(mobileMenu);
+	});
+
+	function doMenuLogic(menu: any) {
+		let menuButton: any = document.querySelector('#menuButton');
+		menu.classList.toggle("full-menu_show");
+		// console.log('HTMLElement ClassList', mobileMenu.className)
+		if(menu.className.includes('full-menu_show')) {
+			menuButton.classList.remove('inv-rotation');
+			menuButton.classList.add('rotation'); 
+		} else {
+			menuButton.classList.remove('rotation'); 
+			menuButton.classList.add('inv-rotation');
+		} 
+	}
+</script>
+
+<style>
+	.counter {
+		counter-reset: section;
+	}
+
+	.rotation {
+		/* transform: rotate(90deg); */
+		animation-name: rotate;
+		animation-duration: 0.5s;
+		animation-direction: normal;
+		animation-fill-mode: both;
+		/* transform: rotate(90deg); */
+	}
+
+	.inv-rotation {
+		/* transform: rotate(90deg); */
+		animation-name: inv-rotate;
+		animation-duration: 0.5s;
+		animation-direction: normal;
+		animation-fill-mode: both;
+		/* transform: rotate(90deg); */
+	}
+
+	@keyframes rotate {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(-90deg);
+		}
+	}
+
+	@keyframes inv-rotate {
+		0% {
+			transform: rotate(-90deg);
+		}
+		100% {
+			transform: rotate(0deg);
+		}
+	}
+
+	.full-menu {
+		/* display: none; */
+		position: absolute;
+		padding: 4rem 0.5rem 0.5rem 0.5rem;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100vh;
+		z-index: 2;
+		background-color: var(--navbar-bg);
+		backdrop-filter: blur(6px);
+
+		background-image:
+			linear-gradient(90deg, var(--squares-gradient) 50%, transparent 50%),
+			linear-gradient(var(--squares-gradient) 50%, transparent 50%);
+		background-size: 4px 4px;
+
+		transform: translateX(-110%);
+    	transition: transform 250ms ease-in-out;
+	}
+
+	.full-menu_show {
+		/* display: flex; */
+		transform: translateX(0);
+	}
+
+    .navbar {
+		position: sticky;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 4rem;
+        z-index: 3;
+		background-color: var(--navbar-bg);
+		backdrop-filter: blur(6px);
+	}
+
+	.nav-button {
+		color: var(--font);
+		margin-left: 1vw;
+		margin-right: 1vw;
+		padding-left: 4px;
+		padding-right: 4px;
+		cursor: pointer;
+		font-family: 'Quicksand';
+		width: 6rem;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.sup:after {
+		/* counter-increment: section; Increment the value of section counter by 1 */
+  		content: counter(section) "a";
+		counter-increment: section;
+		position: absolute;
+		top:-5px;
+		font-size: 0.7rem;
+		/* margin-left: 1px; */
+	}
+
+	.nav-button:hover{
+		font-weight: bolder;
+	}
+
+	.nav-button:hover:before{
+		content:'<\/';
+		font-weight: bolder;
+	}
+
+	.nav-button:hover:after{
+		content:'>';
+		font-weight: bolder;
+	}
+</style>

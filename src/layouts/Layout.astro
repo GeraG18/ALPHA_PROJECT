@@ -13,6 +13,16 @@ const { title } = Astro.props;
 		<meta name="description" content="Astro description">
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<!-- Google Material Symbols -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+		<!-- Google Fonts Preconnect -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<!-- Google Quicksand Font -->
+		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
+		<!-- Google Montserrat Font -->
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
+
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
@@ -21,19 +31,63 @@ const { title } = Astro.props;
 	</body>
 </html>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60%);
+	/* WHITE THEME COLORS */
+	@media(prefers-color-scheme: light) {
+		:root {
+			--navbar-bg: rgba(238,238,238,0.6);
+			--background: #fefefe;
+			--title: #414141;
+			--font: #242424;
+			--font-disabled: #727272;
+			--squares-gradient: rgba(254, 254, 254, .3);
+		}
 	}
+	
+	/* DARK THEME COLORS */
+	@media(prefers-color-scheme: dark) {
+		:root {
+			--navbar-bg: rgba(43,43,43,0.6);
+			--background: #242424;
+			--title: #bebebe;
+			--font: #fefefe;
+			--font-disabled: #888888;
+			--squares-gradient: rgba(36, 36, 36, .3);
+
+		}	
+	}
+
+	/* FONTS & ICONS */
+	.quickSandFont {
+		font-family: 'Quicksand';
+	}
+
+	.MontserratFont {
+		font-family: 'Montserrat';
+	}
+
+	.material-symbols-outlined {
+		font-variation-settings:
+		'FILL' 0,
+		'wght' 400,
+		'GRAD' 0,
+		'opsz' 48
+	}
+
+	/* GENERAL */
+	* {
+		font-family: 'Montserrat', sans-serif;
+		color: var(--font);
+	}
+
 	html {
-		font-family: system-ui, sans-serif;
-		background: #13151A;
-		background-size: 224px;
+		background: var(--background);
 	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
+
+	.title {
+		font-family: 'Quicksand';
+		font-weight: 600;
+		color: var(--title);
+    	transition: .3s ease-in-out;
 	}
+
 </style>
