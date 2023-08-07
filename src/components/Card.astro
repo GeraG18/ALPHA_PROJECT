@@ -1,0 +1,64 @@
+---
+interface Props {
+  name: string;
+  miniDescription?: string;
+  image?: string;
+  id?: string;
+  technologies?: string[];
+}
+const { name, miniDescription, image, technologies, id } = Astro.props;
+---
+<div transition:name={"proyects-card_"+name} class="card cursor-pointer">
+    <div class="card-overlay">
+        <span>{name}</span>
+
+    </div>
+    <img src={image} alt={name} srcset="">
+</div>
+
+<style>
+    .card {
+		z-index: 4;
+		aspect-ratio: 4/2.2;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+        background-color: gray;
+        /* opacity: 0.9; */
+	}
+
+    .card img {
+        /* z-index: -10; */
+        opacity: 0.6;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(100%);
+    }
+
+    .card span {
+        z-index: 2;
+        color: white;
+    }
+
+	.card:hover .card-overlay{
+		display: flex;
+	}
+
+	.card-overlay {
+		display: none;
+		width: 100%;
+		height: 100%;
+		z-index: 10;
+        padding: 0.5rem;
+		position: absolute;
+		background: var(--card-overlay);      
+        justify-content: center;
+        align-items: center;
+    	transition: transform 250ms ease-in;
+	}
+</style>

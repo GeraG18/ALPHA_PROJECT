@@ -1,9 +1,13 @@
 --- 
+import ViewTransitions from 'astro/components/ViewTransitions.astro';
+import BallDecoration from '../components/Ball-Decoration.astro';
+
 interface Props {
 	title: string;
 }
 
 const { title } = Astro.props;
+// import Header from '../components/Header.astro';
 ---
 
 <!DOCTYPE html>
@@ -25,26 +29,45 @@ const { title } = Astro.props;
 
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<ViewTransitions/>
 	</head>
 	<body>
-		<slot />
+		<div id="div-content">
+			<slot />
+			<BallDecoration/>
+		</div>
 	</body>
 </html>
+
 <style is:global>
-	/* WHITE THEME COLORS */
-	@media(prefers-color-scheme: light) {
-		:root {
-			--navbar-bg: rgba(238,238,238,0.6);
-			--background: #fefefe;
-			--title: #414141;
-			--font: #242424;
-			--font-disabled: #727272;
-			--squares-gradient: rgba(254, 254, 254, .3);
-		}
+	:global(.dark) {
+		color-scheme: dark;
 	}
-	
+
+	.light {
+		/* ... */
+		--navbar-bg: rgba(238,238,238,0.6);
+		--background: #fefefe;
+		--title: #414141;
+		--font: #242424;
+		--font-disabled: #727272;
+		--squares-gradient: rgba(254, 254, 254, .3);
+		--card-overlay: rgba(34, 34, 34, 0.7);
+	}
+
+	.dark {
+		/* ... */
+		--navbar-bg: rgba(43,43,43,0.6);
+		--background: #242424;
+		--title: #bebebe;
+		--font: #fefefe;
+		--font-disabled: #888888;
+		--squares-gradient: rgba(36, 36, 36, .3);
+		--card-overlay: rgba(221, 221, 221, 0.7);
+	}
+
 	/* DARK THEME COLORS */
-	@media(prefers-color-scheme: dark) {
+	/* @media(prefers-color-scheme: dark) {
 		:root {
 			--navbar-bg: rgba(43,43,43,0.6);
 			--background: #242424;
@@ -54,7 +77,18 @@ const { title } = Astro.props;
 			--squares-gradient: rgba(36, 36, 36, .3);
 
 		}	
-	}
+	} */
+	/* WHITE THEME COLORS */
+	/* @media(prefers-color-scheme: light) {
+		:root {
+			--navbar-bg: rgba(238,238,238,0.6);
+			--background: #fefefe;
+			--title: #414141;
+			--font: #242424;
+			--font-disabled: #727272;
+			--squares-gradient: rgba(254, 254, 254, .3);
+		}
+	} */
 
 	/* FONTS & ICONS */
 	.quickSandFont {
@@ -75,11 +109,12 @@ const { title } = Astro.props;
 
 	/* GENERAL */
 	* {
-		font-family: 'Montserrat', sans-serif;
+		font-family: 'Montserrat';
 		color: var(--font);
 	}
 
 	html {
+		font-family: 'Montserrat';
 		background: var(--background);
 	}
 

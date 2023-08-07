@@ -1,9 +1,9 @@
 ---
 /* TS Section */
-import {myName} from './../constants/constants';
+import {myName, copyright} from './../constants/constants';
 ---
 
-<div id="navbar" class="navbar flex items-center gap-[1rem] lg:justify-center px-4">
+<div id="navbar" transition:name="web-navbar" class="navbar flex items-center gap-[1rem] lg:justify-center px-4">
 	<!-- <div class="absolute hidden lg:flex left-4 cursor-default">
 		<span class="quickSandFont text-base w-full">
 			{myName}
@@ -21,25 +21,20 @@ import {myName} from './../constants/constants';
 				<div class="nav-button">
 					<span class="sup">H0ME<span>
 				</div>
-				<!-- <div class="nav-button">H0ME</div> -->
 			</a>
-			<!-- <span class="nav-separator w-fit h-fit">/</span> -->
 			<a href="/projects">
 				<div class="nav-button">
 					<span class="sup">PR0JECTS<span>
 				</div>
-				<!-- <div class="nav-button">PR0JECTS</div> -->
 			</a>
-			<!-- <span class="nav-separator w-fit h-fit">/</span> -->
 			<a href="/contact">
 				<div class="nav-button">
 					<span class="sup">C0NTACT<span>
 				</div>
-				<!-- <div class="nav-button">C0NTACT</div> -->
 			</a>
-			<!-- <span class="nav-separator w-fit h-fit">/</span> -->
+
 			<div class="nav-button" id="menuButton_desktop">
-				<span class="sup">M0RE<span>
+				<span class="sup">MENU<span>
 			</div>
 		</div>
     </div>
@@ -48,7 +43,7 @@ import {myName} from './../constants/constants';
 			{myName}
 		</span>
 		<div class="w-full text-end">
-			<span id="menuButton" class="text-center cursor-pointer material-symbols-outlined text-4xl color-[--title]">
+			<span id="menuButton" transition:name="menuButtonMobile" class="text-center cursor-pointer material-symbols-outlined text-4xl color-[--title]">
 				menu
 			</span>
 		</div>
@@ -56,69 +51,188 @@ import {myName} from './../constants/constants';
 </div>
 <div class="full-menu counter" id="mobile-menu"> 
 	<!-- <span>test</span> -->
-	<div class="w-full h-full mt-2 mb-2 flex flex-col gap-y-[2rem] pr-8 pt-8 items-end justify-start">
-		<a href="/">
-			<div class="nav-button">
-				<span class="sup">H0ME<span>
+	<div class="w-full h-full flex items-end justify-start relative">
+		<span class="rotated-left-text opacity-50">{copyright}</span>
+	</div>
+	<div class="w-full h-full mb-2 flex flex-col items-end justify-start">
+		<div class="flex flex-col gap-y-[2rem] pr-[1rem] pt-8">
+			<a href="/" class="lg:hidden">
+				<div class="nav-button !justify-end">
+					<span class="sup">H0ME<span>
+				</div>
+				<!-- <div class="nav-button">H0ME</div> -->
+			</a>
+			<!-- <span class="nav-separator w-fit h-fit">/</span> -->
+			<a href="/projects" class="lg:hidden">
+				<div class="nav-button !justify-end">
+					<span class="sup">PR0JECTS<span>
+				</div>
+				<!-- <div class="nav-button">PR0JECTS</div> -->
+			</a>
+			<!-- <span class="nav-separator w-fit h-fit">/</span> -->
+			<a href="/about_me">
+				<div class="nav-button !justify-end">
+					<span class="sup">AB0UT_ME<span>
+				</div>
+				<!-- <div class="nav-button">M0RE</div> -->
+			</a>
+			<!-- <span class="nav-separator w-fit h-fit">/</span> -->
+			<a href="/experience">
+				<div class="nav-button !justify-end">
+					<span class="sup">EXPERIENCE<span>
+				</div>
+				<!-- <div class="nav-button">M0RE</div> -->
+			</a>
+			<!-- <span class="nav-separator w-fit h-fit">/</span> -->
+			<a href="/contact" class="lg:hidden">
+				<div class="nav-button !justify-end">
+					<span class="sup">C0NTACT<span>
+				</div>
+				<!-- <div class="nav-button">C0NTACT</div> -->
+			</a>
+		</div>
+		<div class="w-full h-full flex items-end justify-end relative mr-[0.5rem]">
+			<div class="flex flex-col items-end gap-2 quickSandFont">
+				<button class="border-el-btn" id="lightThemeButton">
+					Light
+					<span class="b1"></span>
+					<span class="b2"></span>
+					<span class="b3"></span>
+					<span class="b4"></span>
+				</button>
+				<button class="border-el-btn" id="darkThemeButton">
+					Dark
+					<span class="b1"></span>
+					<span class="b2"></span>
+					<span class="b3"></span>
+					<span class="b4"></span>
+				</button>
+				<button class="border-el-btn" id="autoThemeButton">
+					System
+					<span class="b1"></span>
+					<span class="b2"></span>
+					<span class="b3"></span>
+					<span class="b4"></span>
+				</button>
+				<!-- <span class="">Light</span>
+				<span class="">Dark</span>
+				<span class="">Auto</span> -->
 			</div>
-			<!-- <div class="nav-button">H0ME</div> -->
-		</a>
-		<!-- <span class="nav-separator w-fit h-fit">/</span> -->
-		<a href="/projects">
-			<div class="nav-button">
-				<span class="sup">PR0JECTS<span>
-			</div>
-			<!-- <div class="nav-button">PR0JECTS</div> -->
-		</a>
-		<!-- <span class="nav-separator w-fit h-fit">/</span> -->
-		<a href="/about_me">
-			<div class="nav-button">
-				<span class="sup">AB0UT_ME<span>
-			</div>
-			<!-- <div class="nav-button">M0RE</div> -->
-		</a>
-		<!-- <span class="nav-separator w-fit h-fit">/</span> -->
-		<a href="/experience">
-			<div class="nav-button">
-				<span class="sup">EXPERIENCE<span>
-			</div>
-			<!-- <div class="nav-button">M0RE</div> -->
-		</a>
-		<!-- <span class="nav-separator w-fit h-fit">/</span> -->
-		<a href="/contact">
-			<div class="nav-button">
-				<span class="sup">C0NTACT<span>
-			</div>
-			<!-- <div class="nav-button">C0NTACT</div> -->
-		</a>
+		</div>
 	</div>
 </div>
 
-<script>
+<script is:inline>
+	/* THEME */
+	if (localStorage.getItem("theme") !== null) {
+		switch(localStorage.getItem("theme")) {
+			case 'system':
+				// console.log('sys');
+				document.querySelector('#autoThemeButton').classList.add('active-theme'); 
+				document.querySelector('#lightThemeButton').classList.remove('active-theme'); 
+				document.querySelector('#darkThemeButton').classList.remove('active-theme'); 
+			break;
+			case 'dark':
+			// console.log('dark');
+				document.querySelector('#darkThemeButton').classList.add('active-theme'); 
+				document.querySelector('#lightThemeButton').classList.remove('active-theme'); 
+				document.querySelector('#autoThemeButton').classList.remove('active-theme'); 
+			break;
+			case 'light':
+			// console.log('light');
+				document.querySelector('#lightThemeButton').classList.add('active-theme'); 
+				document.querySelector('#autoThemeButton').classList.remove('active-theme'); 
+				document.querySelector('#darkThemeButton').classList.remove('active-theme'); 
+			break;
+		}
+	} else {
+		// console.log('else');
+		switch(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") {
+			case 'system':
+				document.querySelector('#autoThemeButton').classList.add('active-theme'); 
+				document.querySelector('#lightThemeButton').classList.remove('active-theme'); 
+				document.querySelector('#darkThemeButton').classList.remove('active-theme'); 
+			break;
+			case 'dark':
+				document.querySelector('#darkThemeButton').classList.add('active-theme'); 
+				document.querySelector('#lightThemeButton').classList.remove('active-theme'); 
+				document.querySelector('#autoThemeButton').classList.remove('active-theme'); 
+			break;
+			case 'light':
+				document.querySelector('#lightThemeButton').classList.add('active-theme'); 
+				document.querySelector('#autoThemeButton').classList.remove('active-theme'); 
+				document.querySelector('#darkThemeButton').classList.remove('active-theme'); 
+			break;
+		}
+	}
 
-	let menuButton: any = document.querySelector('#menuButton');
-	let menuButtonDesk: any = document.querySelector('#menuButton_desktop');
+	function updateTheme(value) {
+		switch(value) {
+			case 'system':
+				// console.log('sys');
+				document.querySelector('#autoThemeButton').classList.add('active-theme'); 
+				document.querySelector('#lightThemeButton').classList.remove('active-theme'); 
+				document.querySelector('#darkThemeButton').classList.remove('active-theme'); 
+			break;
+			case 'dark':
+			// console.log('dark');
+				document.querySelector('#darkThemeButton').classList.add('active-theme'); 
+				document.querySelector('#lightThemeButton').classList.remove('active-theme'); 
+				document.querySelector('#autoThemeButton').classList.remove('active-theme'); 
+			break;
+			case 'light':
+			// console.log('light');
+				document.querySelector('#lightThemeButton').classList.add('active-theme'); 
+				document.querySelector('#autoThemeButton').classList.remove('active-theme'); 
+				document.querySelector('#darkThemeButton').classList.remove('active-theme'); 
+			break;
+		}
+		document.documentElement.classList.remove("light", "dark");
+		document.documentElement.classList.add(value === "system" ? window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light" : value);
+		localStorage.setItem("theme", value === "system" ? 'system' : value);
+	}
 
-	let mobileMenu: any = document.querySelector('#mobile-menu');
+	updateTheme(localStorage.getItem("theme") ? localStorage.getItem("theme") : 'system');
+
+	window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e => {updateTheme(localStorage.getItem("theme") ? localStorage.getItem("theme") : 'system');});
+	/* THEME BUTTONS */
+	document.querySelector('#lightThemeButton').addEventListener('click', () => {
+		updateTheme('light');
+	});
+
+	document.querySelector('#darkThemeButton').addEventListener('click', () => {
+		updateTheme('dark');
+	});
+
+	document.querySelector('#autoThemeButton').addEventListener('click', () => {
+		updateTheme('system');
+	});
+
+	/* NAVBAR */
+	document.querySelector('#mobile-menu').addEventListener('click', () => {
+		// console.log('ei')
+
+		doMenuLogic();
+	});
 	
-	menuButton.addEventListener('click', () => {
-		doMenuLogic(mobileMenu);
+	document.querySelector('#menuButton').addEventListener('click', () => {
+		// console.log('ei')
+		doMenuLogic();
 	});
 
-	menuButtonDesk.addEventListener('click', () => {
-		doMenuLogic(mobileMenu);
+	document.querySelector('#menuButton_desktop').addEventListener('click', () => {
+		doMenuLogic();
 	});
 
-	function doMenuLogic(menu: any) {
-		let menuButton: any = document.querySelector('#menuButton');
-		menu.classList.toggle("full-menu_show");
-		// console.log('HTMLElement ClassList', mobileMenu.className)
-		if(menu.className.includes('full-menu_show')) {
-			menuButton.classList.remove('inv-rotation');
-			menuButton.classList.add('rotation'); 
+	function doMenuLogic() {
+		document.querySelector('#mobile-menu').classList.toggle("full-menu_show");
+
+		if(document.querySelector('#mobile-menu').className.includes('full-menu_show')) {
+			document.querySelector('#menuButton').classList.remove('inv-rotation');
+			document.querySelector('#menuButton').classList.add('rotation'); 
 		} else {
-			menuButton.classList.remove('rotation'); 
-			menuButton.classList.add('inv-rotation');
+			document.querySelector('#menuButton').classList.remove('rotation'); 
+			document.querySelector('#menuButton').classList.add('inv-rotation');
 		} 
 	}
 </script>
@@ -126,6 +240,12 @@ import {myName} from './../constants/constants';
 <style>
 	.counter {
 		counter-reset: section;
+	}
+
+	.rotated-left-text {
+		/* rotate: 90deg; */
+		writing-mode: vertical-rl;
+		font-family: 'Quicksand';
 	}
 
 	.rotation {
@@ -172,9 +292,11 @@ import {myName} from './../constants/constants';
 		left: 0;
 		width: 100%;
 		height: 100vh;
-		z-index: 2;
+		z-index: 15;
 		background-color: var(--navbar-bg);
 		backdrop-filter: blur(6px);
+		display: flex;
+		flex-direction: row;
 
 		background-image:
 			linear-gradient(90deg, var(--squares-gradient) 50%, transparent 50%),
@@ -196,7 +318,7 @@ import {myName} from './../constants/constants';
 		left: 0;
 		width: 100%;
 		height: 4rem;
-        z-index: 3;
+        z-index: 20;
 		background-color: var(--navbar-bg);
 		backdrop-filter: blur(6px);
 	}
@@ -238,5 +360,82 @@ import {myName} from './../constants/constants';
 	.nav-button:hover:after{
 		content:'>';
 		font-weight: bolder;
+	}
+
+	.active-theme {
+		color:#0F7EEB;
+	}
+
+	.active-theme span {
+		color:#0F7EEB;
+		background-color:#0F7EEB;
+	}
+
+	button {
+		color: var(--font);
+		outline: none;
+		z-index: 10;
+		border: none;
+		width: 5rem;
+		height: 2rem;
+		font-size: 17px;
+		/* padding: 1rem 2rem; */
+		position: relative;
+		background: none;
+		cursor: pointer;
+	}
+	
+	button:active {
+		transform: scale(.98);
+	}
+	
+	button span {
+		position: absolute;
+		background: var(--font);
+		transition: .5s;
+	}
+	
+	button span:nth-child(1) {
+		top: 0;
+		left: 0;
+		width: 2px;
+		height: 30%;
+	}
+	
+	button:hover span:nth-child(1) {
+		height: 50%;
+	}
+	
+	button span:nth-child(2) {
+		top: 0;
+		left: 0;
+		width: 15%;
+		height: 2px;
+	}
+	
+	button:hover span:nth-child(2) {
+		width: 50%;
+	}
+	
+	button span:nth-child(3) {
+		bottom: 0;
+		right: 0;
+		width: 2px;
+		height: 30%;
+	}
+	
+	button:hover span:nth-child(3) {
+		height: 50%;
+	}
+	
+	button span:nth-child(4) {
+		bottom: 0;
+		right: 0;
+		width: 15%;
+		height: 2px;
+	}
+	
+	button:hover span:nth-child(4) {
+		width: 50%;
 	}
 </style>

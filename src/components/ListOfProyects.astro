@@ -1,0 +1,14 @@
+---
+import Card from "./Card.astro";
+
+const projects = await Astro.glob("../content/*.md");
+---
+
+<div transition:animate="slide" class="z-10 h-max-[88vh] h-fit w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+    {
+        await projects.map((item) => (
+            <Card name={item?.frontmatter?.title} image={item?.frontmatter?.image}/>
+
+        ))
+    }
+</div>
